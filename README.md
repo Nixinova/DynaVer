@@ -1,0 +1,2 @@
+# dynaver
+ Dynamic Versioning spec
