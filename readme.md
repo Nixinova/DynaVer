@@ -8,7 +8,7 @@ Dynamic Versioning, or DynaVer for short, is a specification for versioning whic
 The following is the general format for a Dynamic Version: `<Number>[<Identifier>][<Metadata>]`. **Number** can be split into between two and four segments: `<Disruptive>.<Breaking>`, `<Disruptive>.<Breaking>.<Feature>`, and `<Disruptive>.<Breaking>.<Feature>.<Fix>`.
 
 **Extended layout:**
-- `<Disruptive>.<Breaking>[.<Feature>[.<Fix>]][((-|~)<Pre>|_<Post>)][+<Metadata>]`
+- `<Disruptive>.<Breaking>[.<Feature>[.<Fix>]][(-<Pre>|_<Post>)][(+|~)<Metadata>]`
 
 **Allowed layouts:**
 - `<Disruptive>.<Breaking>` (e.g., `1.0`)
@@ -51,13 +51,13 @@ The optional **Fix** **Number** must be incremented only when backwards-compatab
 The **Identifier** segment can either contain **Pre** or **Post**, but not both. The **Identifier** must go after the **Number** segment and before the **Metadata**. **Identifier**s should only contain alphanumeric characters, full stops, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ### Pre
-The optional **Pre** **Identifier** may be used to mark a version that is currently in development. The **Pre** identifier must be prefixed with a hyphen-minus character (`-`); if this character is not allowed to be used in your program, it may be replaced with a tilde (`~`).
+The optional **Pre** **Identifier** may be used to mark a version that is currently in development. The **Pre** identifier must be prefixed with a hyphen-minus character (`-`).
 
 ### Post
 The optional **Post** **Identifier** may be used to release a hotfix for a version or to mark changes that are for an unknown future release. The **Post** identifier must be prefixed with an underscore (`_`).
 
 ### Metadata
-The optional **Metadata** segment may be used to mark the metadata of a build. The **Metadata** segment must be prefixed with a plus sign (`+`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
+The optional **Metadata** segment may be used to mark the metadata of a build. The **Metadata** segment must be prefixed with a plus sign (`+`); if this character is not allowed to be used in your program, it may be replaced with a tilde (`~`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ## Incrementing
 Each part of a **Number** must increment individually as an integer; the version after `1.9` could be `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version; when two versions contain inconsistent dot-seperated parts, the dots should be removed when comparing (e.g., `1.0-pre.1` < `1.0-pre2`). The **Pre** segment typically follows progressions such as `-alpha.<*>` -> `-beta.<*>` -> `-rc.<*>` or `-dev.<*>` -> `-pre.<*>`. The **Post** segment is typically a single number representing the recompilation count.
