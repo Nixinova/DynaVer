@@ -51,10 +51,10 @@ The optional **Fix** **Number** must be incremented only when backwards-compatab
 The **Identifier** segment can either contain **Pre** or **Post**, but not both. The **Identifier** must go after the **Number** segment and before the **Metadata**. **Identifier**s should only contain alphanumeric characters, full stops, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ### Pre
-The optional **Pre** **Identifier** may be used to affix a version that is currently in development. The **Pre** identifier must be prefixed with a hyphen-minus character (`-`); if this character is not allowed to be used in your program, it may be replaced with a tilde (`~`).
+The optional **Pre** **Identifier** may be used to mark a version that is currently in development. The **Pre** identifier must be prefixed with a hyphen-minus character (`-`); if this character is not allowed to be used in your program, it may be replaced with a tilde (`~`).
 
 ### Post
-The optional **Post** **Identifier** may be used to mark a version that is currently in development. The **Post** identifier must be prefixed with an underscore (`_`).
+The optional **Post** **Identifier** may be used to release a hotfix for a version or to mark changes that are for an unknown future release. The **Post** identifier must be prefixed with an underscore (`_`).
 
 ### Metadata
 The optional **Metadata** segment may be used to mark the metadata of a build. The **Metadata** segment must be prefixed with a plus sign (`+`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
