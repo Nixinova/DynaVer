@@ -54,7 +54,7 @@ The **Identifier** segment can either contain **Pre** or **Post**, but not both.
 The optional **Pre** **Identifier** may be used to mark a version that is currently in development. The **Pre** identifier must be prefixed with a hyphen-minus character (`-`).
 
 #### Post
-The optional **Post** **Identifier** may be used to release a hotfix for a version or to mark changes that are for an unknown future release. The **Post** identifier must be prefixed with an underscore (`_`).
+The optional **Post** **Identifier** may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. The **Post** identifier must be prefixed with an underscore (`_`).
 
 ### Metadata
 The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`); if this character is not allowed to be used in your program, or the version is being used in a URL, it may be replaced with a tilde (`~`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
