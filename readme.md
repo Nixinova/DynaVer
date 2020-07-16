@@ -30,6 +30,12 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>_<Post>+<Metadata>` (e.g., `3.1.4.5_1+20200610`)
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>+<Metadata>` (e.g., `2.0.1.0+1e73fa6`)
 
+**SemVer layout:**
+
+While DynaVer allows four **Number** parts, SemVer only allows three, so the following format must be used in SemVer environments such as npm:
+
+`<Disruptive>.<Incompatible>.<Compatible>-<Patch>[(-<Pre>|_<Post>)][~<Metadata>]`
+
 ### Number
 
 Each part of the **Number** segment must be an integer number (`[0-9]`) and may be zero-padded. Each declared part is delimited by a dot (`.`). The **Number** segment must come first in a version string.
