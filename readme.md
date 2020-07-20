@@ -14,12 +14,12 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 - `<Disruptive>.<Incompatible>` (e.g., `1.0`)
 - `<Disruptive>.<Incompatible>-<Pre>` (e.g., `2.3-pre1`)
 - `<Disruptive>.<Incompatible>-<Pre>+<Metadata>` (e.g., `0.4-pre1+build5`)
-- `<Disruptive>.<Incompatible>_<Post>` (e.g., `1.4_5`)
-- `<Disruptive>.<Incompatible>_<Post>+<Metadata>` (e.g., `3.1_2+bump-deps`)
-- `<Disruptive>.<Incompatible>+<Metadata>` (e.g., `0.8+5`)
-- `<Disruptive>.<Incompatible>.<Compatible>` (e.g., `1.0.8`)
+- `<Disruptive>.<Incompatible>_<Post>` (e.g., `1.04_5`)
+- `<Disruptive>.<Incompatible>_<Post>+<Metadata>` (e.g., `3.1_02+bump-deps`)
+- `<Disruptive>.<Incompatible>+<Metadata>` (e.g., `0.08+5`)
+- `<Disruptive>.<Incompatible>.<Compatible>` (e.g., `1.0.008`)
 - `<Disruptive>.<Incompatible>.<Compatible>-<Pre>` (e.g., `2.3.0-beta2`)
-- `<Disruptive>.<Incompatible>.<Compatible>-<Pre>+<Metadata>` (e.g., `1.6.7-alpha1+2020.05`)
+- `<Disruptive>.<Incompatible>.<Compatible>-<Pre>+<Metadata>` (e.g., `1.6.07-alpha1+2020.05`)
 - `<Disruptive>.<Incompatible>.<Compatible>_<Post>` (e.g., `6.1.9_1`)
 - `<Disruptive>.<Incompatible>.<Compatible>_<Post>+<Metadata>` (e.g., `2.2.3_1+recompiled`)
 - `<Disruptive>.<Incompatible>.<Compatible>+<Metadata>` (e.g., `1.9.0+release.1`)
@@ -66,13 +66,13 @@ The optional **Post** **Identifier** may be used to mark a version that only dif
 The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`); if this character is not allowed to be used in your program, or the version is being used in a URL, it may be replaced with a tilde (`~`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ## Incrementing
-Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version. The **Pre** segment typically follows progressions such as `-alpha` -> `-beta` -> `-rc` or `-dev` -> `-pre`. The **Post** segment is typically a single number representing the recompilation count, such as `_1` -> `_2`, etc.
+Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version as described by the comparison information below. The **Pre** segment typically follows progressions such as `-alpha` -> `-beta` -> `-rc` or `-dev` -> `-pre`. The **Post** segment is typically a single number representing the recompilation count, such as `_1` -> `_2`, etc.
 
 ### Example
-`0.0.1` -> `0.0.1.1` -> `0.0.2.0` -> `0.0.1` -> `0.1` -> `0.1.0.1` -> `0.2.0` -> `0.2.1` -> `0.2.1_1` -> ... -> `0.9` -> `0.10` -> ... -> `1.0-pre1` -> `1.0-pre2` -> ... -> `1.0-pre10` -> `1.0.0-rc` -> `1.0.0+win` & `1.0.0+mac` -> `1.0_1` -> `1.0.0.1` -> `1.0.1.0` -> `1.1-dev+39f2e51` -> `1.1` -> ... -> `1.9.0` -> `1.9.1` -> `1.10` -> ... -> `2.0-rc.1` -> `2.0-rc2` -> `2.0`
+`0.0.1` -> `0.0.1.1` -> `0.0.2.0` -> `0.0.1` -> `0.01` -> `0.1.0.1` -> `0.2.0` -> `0.2.1` -> `0.2.1_1` -> ... -> `0.9` -> `0.10` -> ... -> `1.0-pre1` -> `1.0-pre2` -> ... -> `1.0-pre10` -> `1.0.0-rc` -> `1.0.0+win` & `1.0.0+mac` -> `1.0_1` -> `1.0.0.1` -> `1.0.1.0` -> `1.1-dev+39f2e51` -> `1.01` -> ... -> `1.9.0` -> `1.9.1` -> `1.10` -> ... -> `2.0-rc.1` -> `2.0-rc2` -> `2.00`
 
 ## Comparing
-Versions should be compared by going across from the right, comparing each **Number** part numerically. When **Compatible** and **Patch** are missing, they default to `0`, such that `1.0-pre2` < `1.0.0-pre3` and `1.6` = `1.6.0` = `1.6.0.0`. Versions with **Pre** **Identifier**s take lower precedence than their corresponding release versions, such that `0.7-pre1` < `0.7`. Versions with **Post** **Indentifier**s take higher precedence than their corresponding release versions, such that `1.6.0` < `1.6_1`. When two versions contain inconsistent dot-seperated **Identifier** parts, the dots should be removed when comparing, such that `1.0-A.B` < `1.0-AC`. When an **Identifier** contains numbers, the numbers should be compared numerically and independently from the surrounding characters, such that `1.4-pre4` < `1.4-pre10`. **Metadata** must be ignored completely when comparing versions.
+Versions should be compared by going across from the right, comparing each **Number** part numerically. When **Compatible** and **Patch** are missing, they default to `0`, such that `1.0-pre2` < `1.0.0-pre3` and `1.06` = `1.6` = `1.6.0` = `1.6.0.0`. Versions with **Pre** **Identifier**s take lower precedence than their corresponding release versions, such that `0.7-pre1` < `0.7`. Versions with **Post** **Indentifier**s take higher precedence than their corresponding release versions, such that `1.6.0` < `1.6_1`. When two versions contain inconsistent dot-seperated **Identifier** parts, the dots should be removed when comparing, such that `1.0-A.B` < `1.0-AC`. When an **Identifier** contains numbers, the numbers should be compared numerically and independently from the surrounding characters, such that `1.4-pre4` < `1.4-pre10`. **Metadata** must be ignored completely when comparing versions.
 
 ## Named ranges
 Versions in range `0.0.0.*` are Pre-Alpha versions. Versions in this range should probably not be released to the public and may be unstable, or even nonfunctional, with prevalent major bugs. Since there is only one version number to increment, any changes, breaking or patch, can be added in any new version, and so **Pre** and **Post** **Identifier**s may be useful for denoting semantic changes in this range.
