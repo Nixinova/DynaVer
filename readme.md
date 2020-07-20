@@ -83,4 +83,5 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can declare they want to receive, for example, only `1.6.*` versions, and they should be able to use their software without any incompatible changes breaking it.
 
-A version may be upgraded from one phase to the next at any point, and the new version does not need to match the upgrading criteria applied to release versions. For example, 0.7.3 could be followed by 1.0 which may only contain a single bug fix. This also applies to versions tagged with the **Pre** **Identifier**; for example, 1.1.0-rc3 and 1.1.0 may be the exact same version.
+## Upgrading
+A version may be upgraded from one development phase or to the next or a pre-release to full release at any point, and the new version does not need to match the upgrading criteria applied to release versions. For example, 0.7.3 could be followed by 1.00 which may only contain a single bug fix, and 1.1.0-rc3 and 1.1.0 may be the exact same version.
