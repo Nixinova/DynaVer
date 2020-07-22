@@ -18,7 +18,7 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 - `<Disruptive>.<Incompatible>_<Post>-<Pre>` (e.g., `3.1_nightly-5`)
 - `<Disruptive>.<Incompatible>.<Compatible>` (e.g., `1.0.008`)
 - `<Disruptive>.<Incompatible>.<Compatible>-<Pre>` (e.g., `2.3.0-Beta.2`)
-- `<Disruptive>.<Incompatible>.<Compatible>_<Post>` (e.g., `6.1.9_1`)
+- `<Disruptive>.<Incompatible>.<Compatible>_<Post>` (e.g., `6.1.9_01`)
 - `<Disruptive>.<Incompatible>.<Compatible>-<Pre>_<Post>` (e.g., `3.1.08-alpha1_v2`)
 - `<Disruptive>.<Incompatible>.<Compatible>_<Post>-<Pre>` (e.g., `1.0.04_1-rc`)
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>` (e.g., `2.0.1.3`)
@@ -43,7 +43,7 @@ Each part of the **Number** segment must be an integer number (`[0-9]`) and may 
 The **Disruptive** **Number** must be incremented whenever there is a change made to the project which drastically breaks or disrupts existing functionality for many of your users.
 
 #### Incompatible
-The **Incompatible** **Number** must be incremented whenever there is a change made that breaks existing functionality for some users who are following your documentation correctly.
+The **Incompatible** **Number** must be incremented whenever there is a change made that breaks minor existing functionality for some users who are following your documentation correctly.
 
 #### Compatible
 The optional **Compatible** **Number** must be incremented whenever only backwards-compatable changes are made to the project.
