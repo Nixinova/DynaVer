@@ -56,7 +56,7 @@ The optional **Patch** **Number** must be incremented whenever only backwards-co
 The **Identifier** segment can contain **Pre**, **Post**, or both in any permutation. The **Identifier** must go after the **Number** segment and before the **Metadata**. **Identifier**s should only contain alphanumeric characters and full stops (`[a-zA-Z0-9.]`).
 
 #### Pre
-The optional **Pre** **Identifier** may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`).
+The optional **Pre** **Identifier** may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`). The **Pre** **Identifier** typically follows incrementing progressions such as `-alpha` -> `-beta` -> `-rc` or `-dev` -> `-pre`.
 
 #### Post
 The optional **Post** **Identifier** may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. It must be prefixed with an underscore (`_`).
@@ -65,7 +65,7 @@ The optional **Post** **Identifier** may be used to mark a version that only dif
 The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`); if this character is not allowed to be used in your program, or the version is being used in a URL, it may be replaced with a tilde (`~`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ## Incrementing
-Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version as described by the comparison information below. The **Pre** segment typically follows progressions such as `-alpha` -> `-beta` -> `-rc` or `-dev` -> `-pre`. The **Post** segment is typically a single number representing the recompilation count, such as `_1` -> `_2`, etc.
+Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version as described by the comparison information below.
 
 ### Example
 `0.0.1` -> `0.0.1.1` -> `0.0.2.0` -> `0.0.1` -> `0.01` -> `0.1.0.1` -> `0.2.0` -> `0.2.1` -> `0.2.1_1` -> ... -> `0.9` -> `0.10` -> ... -> `1.0-pre1` -> `1.0-pre2` -> ... -> `1.0-pre10` -> `1.0.0-rc` -> `1.0.0+win` & `1.0.0+mac` -> `1.0_1` -> `1.0.0.1` -> `1.0.1.0` -> `1.1-dev+39f2e51` -> `1.01` -> ... -> `1.9.0` -> `1.9.1` -> `1.10` -> ... -> `2.0-rc.1` -> `2.0-rc2` -> `2.0-rc2_1` -> `2.00`
