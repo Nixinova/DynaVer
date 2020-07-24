@@ -31,9 +31,9 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 
 **SemVer layout:**
 
-While DynaVer allows four **Number** parts, SemVer only allows three. Additionally, many environments that use SemVer do not allow metadata. Therefore, the following format must be used in SemVer environments, such as npm:
+While DynaVer allows four **Number** parts, SemVer only allows three. Additionally, many environments that use SemVer do not allow metadata, and do not allow underscores. Therefore, the following format must be used in SemVer environments, such as npm:
 
-`<Disruptive>.<Incompatible>.<Compatible>-<Patch>[(-<Pre>|_<Post>)]`
+`<Disruptive>.<Incompatible>.<Compatible>-<Patch>[(-<Pre>|--<Post>)]`
 
 ### Number
 
