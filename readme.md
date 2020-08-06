@@ -84,3 +84,34 @@ Versions in range `0.0.*` are Alpha versions. These versions may be publicly rel
 Versions in range `0.*` are Beta versions. These versions are relatively stable and should be able to be safely used but with the expectation of having a few bugs. Versions in this range are incremented using the regular **Number** format but without changes bumping the **Disruptive** part. Versions in this range should now have semantic meaning, following the `0.<Incompatible>.<Compatible>.<Patch>` format.
 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
+
+## Backus–Naur form
+*[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-1-0)*
+```
+<dynaver> ::= <number> <identifier> <metadata>
+
+<number> ::= <integers> "." <integers>
+           | <integers> "." <integers> "." <integers>
+           | <integers> "." <integers> "." <integers> "." <integers>
+           
+<identifier> ::= "-" <identifier_characters>
+			   | "_" <identifier_characters>
+			   | "-" <identifier_characters> "_" <identifier_characters>
+			   | "_" <identifier_characters> "-" <identifier_characters>
+
+<metadata> ::= "+" <metadata_characters>
+
+<metadata_characters> ::= <metadata_characters> "-" <metadata_characters>
+                        | <metadata_characters> "_" <metadata_characters>
+                        | <identifier_characters>
+                        
+<identifier_characters> ::= <integers> <identifier_characters>
+                          | <letters> <identifier_characters>
+                          | <identifier_characters> "." <identifier_characters>
+                          | <integers>
+                          | <letters>
+
+<integers> ::= [0-9]+
+
+<letters> ::= [a-z] <letters> | [A-Z] <letters> | [a-z] | [A-Z]
+```
