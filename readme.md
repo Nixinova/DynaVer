@@ -86,26 +86,26 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
 ## Backus–Naur form
-*[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-1-3--1)*
+*[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-1-4)*
 ```
 <dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
 
-<number> ::= <integers> "." <integers> ( "." <integers> ( "." <integers> )? )?
+<number> ::= <integer>+ "." <integer>+ ( "." <integer>+ ( "." <integer>+ )? )?
 
 <identifier> ::= <pre> ( <post> )?
                | <post> ( <pre> )?
 
-<metadata> ::= "+" <metadata_characters>
+<metadata> ::= "+" <metadata_character>+
 
-<pre> ::= "-" <identifier_characters>
+<pre> ::= "-" <identifier_character>+
 
-<post> ::= "_" <identifier_characters>
+<post> ::= "_" <identifier_character>+
 
-<identifier_characters> ::= ( <integers> | <letters> | "." )+
+<identifier_character> ::= <integer> | <letter> | "."
 
-<metadata_characters> ::= ( <identifier_characters> | "-" | "_" )+
+<metadata_character> ::= <identifier_character> | "-" | "_"
 
-<integers> ::= [0-9]+
+<integer> ::= [0-9]
 
-<letters> ::= ( [a-z] | [A-Z] )+
+<letter> ::= ( [a-z] | [A-Z] )
 ```
