@@ -40,10 +40,10 @@ While DynaVer allows four **Number** parts, SemVer only allows three. Additional
 Each part of the **Number** segment must be an integer number (`[0-9]`) and may be zero-padded. Each declared part is delimited by a dot (`.`). The **Number** segment must come first in a version string.
 
 #### Disruptive
-The **Disruptive** **Number** must be incremented whenever there is a change made to the project which drastically breaks or disrupts existing functionality for many of your users.
+The **Disruptive** **Number** must be incremented whenever there is a change made to the project which drastically breaks or disrupts a major aspect of your project or when a breaking change affects many of your users who are following your documentation correctly.
 
 #### Incompatible
-The **Incompatible** **Number** must be incremented whenever there is a change made that breaks minor existing functionality for some users who are following your documentation correctly.
+The **Incompatible** **Number** must be incremented whenever there is a change made that breaks a minor aspect of your project, when a minor breaking change is implemented, or when deprecated functionality is removed.
 
 #### Compatible
 The optional **Compatible** **Number** must be incremented whenever only backwards-compatable changes are made to the project.
