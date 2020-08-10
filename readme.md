@@ -1,16 +1,16 @@
 # Dynamic Versioning
 
-Dynamic Versioning, or DynaVer for short, is a specification for versioning which is very intuitive and versatile -- you probably use something very similar to this naturally. DynaVer is a superset of [SemVer](https://github.com/semver/semver), meaning all valid SemVers are valid DynaVers.
+Dynamic Versioning, or DynaVer for short, is a specification for versioning which is very intuitive and versatile &ndash; you probably use something very similar to this naturally. DynaVer is a superset of [SemVer](https://github.com/semver/semver), meaning all valid SemVers are valid DynaVers.
 
 ## Format
 *Note: Values in `<`angle brackets`>` are variable names, values in `[`square brackets`]` are optional, and values in `(`parentheses`)` must select one of the values delimited by a pipe (`|`).*
 
 The following is the general format for a Dynamic Version: `<Number>[<Identifiers>][<Metadata>]`. **Number** can be split into between two and four segments: `<Disruptive>.<Incompatible>`, `<Disruptive>.<Incompatible>.<Compatible>`, and `<Disruptive>.<Incompatible>.<Compatible>.<Patch>`.
 
-**Extended layout:**
+### Extended layout
 - `<Disruptive>.<Incompatible>[.<Compatible>[.<Patch>]]([-<Pre>][_<Post>]|[_<Post>][-<Pre>])[(+|~)<Metadata>]`
 
-**Allowed layouts:**
+### Allowed layouts
 - `<Disruptive>.<Incompatible>` (e.g., `1.0`)
 - `<Disruptive>.<Incompatible>-<Pre>` (e.g., `2.3-pre1`)
 - `<Disruptive>.<Incompatible>_<Post>` (e.g., `1.04_5`)
@@ -20,16 +20,16 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 - `<Disruptive>.<Incompatible>.<Compatible>-<Pre>` (e.g., `2.3.0-Beta.2`)
 - `<Disruptive>.<Incompatible>.<Compatible>_<Post>` (e.g., `6.1.9_01`)
 - `<Disruptive>.<Incompatible>.<Compatible>-<Pre>_<Post>` (e.g., `3.1.08-alpha1_v2`)
-- `<Disruptive>.<Incompatible>.<Compatible>_<Post>-<Pre>` (e.g., `1.0.04_1-rc`)
-- `<Disruptive>.<Incompatible>.<Compatible>.<Patch>` (e.g., `2.0.1.3`)
+- `<Disruptive>.<Incompatible>.<Compatible>_<Post>-<Pre>` (e.g., `1.0.4_1-rc`)
+- `<Disruptive>.<Incompatible>.<Compatible>.<Patch>` (e.g., `4.0.1.3`)
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>-<Pre>` (e.g., `2.0.3.0-rc3`)
-- `<Disruptive>.<Incompatible>.<Compatible>.<Patch>_<Post>` (e.g., `1.0.0.1_3`)
+- `<Disruptive>.<Incompatible>.<Compatible>.<Patch>_<Post>` (e.g., `1.8.0.1_3`)
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>-<Pre>_<Post>` (e.g., `10.1.4.13-RC_1`)
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>_<Post>-<Pre>` (e.g., `2.1.0.0_next-pre2`)
 
 **Metadata** may be added to any of the above formats
 
-**SemVer layout:**
+### SemVer layout
 
 While DynaVer allows four **Number** parts, SemVer only allows three. Additionally, many environments that use SemVer do not allow metadata, and do not allow underscores. Therefore, the following format must be used in SemVer environments, such as npm:
 
@@ -65,7 +65,7 @@ The optional **Post** **Identifier** may be used to mark a version that only dif
 The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`); if this character is not allowed to be used in your program, or the version is being used in a URL, it may be replaced with a tilde (`~`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ## Incrementing
-Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version as described by the comparison information below.
+Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version as described by the comparison information below. No version must be semantically equal to any previous version &ndash; if there is already a version called `2.3` there must not be any other versions called `2.03`, `2.3.0`, etc, as all of these must be treated as the exact same version.
 
 ### Example
 `0.0.1` &rarr; `0.0.1.1` &rarr; `0.0.2.0` &rarr; `0.0.1` &rarr; `0.01` &rarr; `0.1.0.1` &rarr; `0.2.0` &rarr; `0.2.1` &rarr; `0.2.1_1` &rarr; ... &rarr; `0.9` &rarr; `0.10` &rarr; ... &rarr; `1.0-pre1` &rarr; `1.0-pre2` &rarr; ... &rarr; `1.0-pre10` &rarr; `1.0.0-rc` &rarr; `1.0.0+win` & `1.0.0+mac` &rarr; `1.0_1` &rarr; `1.0.0.1` &rarr; `1.0.1.0` &rarr; `1.1-dev+39f2e51` &rarr; `1.01` &rarr; ... &rarr; `1.9.0` &rarr; `1.9.1` &rarr; `1.10` &rarr; ... &rarr; `2.0-rc.1` &rarr; `2.0-rc2` &rarr; `2.0-rc2_1` &rarr; `2.00`
@@ -85,7 +85,7 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
-## Backus–Naur form
+## Backus&ndash;Naur form
 *[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-1-7)*
 ```
 <dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
