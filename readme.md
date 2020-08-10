@@ -86,7 +86,7 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
 ## Backus–Naur form
-*[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-1-5)*
+*[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-1-6)*
 ```
 <dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
 
@@ -101,11 +101,23 @@ Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions ar
 
 <post> ::= "_" <identifier_character>+
 
-<identifier_character> ::= <integer> | <letter> | (<integer> | <letter> | ".")
-
-<metadata_character> ::= <identifier_character> | (<identifier_character> | "-" | (<identifier_character> | "_"))
-
 <integer> ::= [0-9]
 
-<letter> ::= [a-z] | [A-Z]
+<identifier_character> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"
+                         | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T"
+                         | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d"
+                         | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n"
+                         | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x"
+                         | "y" | "z"
+                         | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+                         | "."
+
+<metadata_character> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"
+                       | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T"
+                       | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d"
+                       | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n"
+                       | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x"
+                       | "y" | "z"
+                       | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+                       | "." | "-" | "_"
 ```
