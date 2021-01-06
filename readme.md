@@ -86,7 +86,7 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
 ## Backus&ndash;Naur form
-*[Sandbox](https://tinyurl.com/DynaVerBNF-0-2-3-2)*
+*[Sandbox](https://tinyurl.com/DynaVerBNF-1-0-0-0)*
 ```
 <dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
 
