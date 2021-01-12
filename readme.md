@@ -27,13 +27,7 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>-<Pre>_<Post>` (e.g., `10.1.4.13-RC_1`)
 - `<Disruptive>.<Incompatible>.<Compatible>.<Patch>_<Post>-<Pre>` (e.g., `2.1.0.0_next-pre2`)
 
-**Metadata** may be added to any of the above formats
-
-### SemVer layout
-
-While DynaVer allows four **Number** parts, SemVer only allows three. Additionally, many environments that use SemVer do not allow metadata, and do not allow underscores. Therefore, the following format must be used in SemVer environments, such as npm:
-
-`<Disruptive>.<Incompatible>.<Compatible>-<Patch>([-<Pre>][--<Post>]|[--<Post>][-<Pre>])`
+**Metadata** may be added to any of the above formats.
 
 ### Number
 
