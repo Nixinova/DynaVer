@@ -62,7 +62,7 @@ The optional **Pre** **Identifier** may be used to mark a version that is curren
 The optional **Post** **Identifier** may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. It must be prefixed with an underscore (`_`).
 
 ### Metadata
-The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`); if this character is not allowed to be used in your program, or the version is being used in a URL, it may be replaced with a tilde (`~`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
+The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
 
 ## Incrementing
 Each part of a **Number** must increment individually as an integer; the incompatible version after `1.9` is `1.10`, which is not the same as `1.1`. All **Number** parts following the part incremented must be reset (implicitly to `0`); `1.2.1` is followed by `1.3`. Each dot-seperated **Identifier** part should increment in such a way that the new version sorts lexically after the previous version as described by the comparison information below. No version must be semantically equal to any previous version &ndash; if there is already a version called `2.3` there must not be any other versions called `2.03`, `2.3.0`, etc, as all of these must be treated as the exact same version.
@@ -86,7 +86,7 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
 ## Backus&ndash;Naur form
-*[Sandbox](https://tinyurl.com/DynaVerBNF-1-0-0-0)*
+*[Sandbox](https://tinyurl.com/DynaVer-BNF-1-0-0-0-rc2)*
 ```
 <dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
 
@@ -95,7 +95,7 @@ Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions ar
 <identifier> ::= <pre> ( <post> )?
                | <post> ( <pre> )?
 
-<metadata> ::= ("+" | "~") <metadata_character>+
+<metadata> ::= "+" <metadata_character>+
 
 <pre> ::= "-" <identifier_character>+
 
