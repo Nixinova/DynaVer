@@ -8,7 +8,7 @@ Dynamic Versioning, or DynaVer for short, is a specification for versioning whic
 The following is the general format for a Dynamic Version: `<Number>[<Identifiers>][<Metadata>]`. **Number** can be split into between two and four segments: `<Disruptive>.<Incompatible>`, `<Disruptive>.<Incompatible>.<Compatible>`, and `<Disruptive>.<Incompatible>.<Compatible>.<Patch>`.
 
 ### Extended layout
-- `<Disruptive>.<Incompatible>[.<Compatible>[.<Patch>]]([-<Pre>][_<Post>]|[_<Post>][-<Pre>])[(+|~)<Metadata>]`
+- `<Disruptive>.<Incompatible>[.<Compatible>[.<Patch>]]([-<Pre>][_<Post>]|[_<Post>][-<Pre>])[+<Metadata>]`
 
 ### Allowed layouts
 - `<Disruptive>.<Incompatible>` (e.g., `1.0`)
