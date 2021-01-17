@@ -47,13 +47,13 @@ The optional **Patch** **Number** must be incremented whenever only backwards-co
 
 ### Identifier
 
-The **Identifier** segment can contain **Pre**, **Post**, or both in any permutation. The **Identifier** must go after the **Number** segment and before the **Metadata**. **Identifier**s should only contain alphanumeric characters and full stops (`[a-zA-Z0-9.]`).
+The optional **Identifier** segment can contain **Pre**, **Post**, or both in any permutation. The **Identifier** must go after the **Number** segment and before the **Metadata**.
 
 #### Pre
-The optional **Pre** **Identifier** may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`). The **Pre** **Identifier** typically follows incrementing progressions such as `-alpha` &rarr; `-beta` &rarr; `-rc` or `-dev` &rarr; `-pre`.
+The optional **Pre** **Identifier** may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`). The **Pre** **Identifier** typically follows incrementing progressions such as `-alpha` &rarr; `-beta` &rarr; `-rc` or `-dev` &rarr; `-pre`. **Pre** **Identifier**s should only contain alphanumeric characters, dots and hyphens (`[a-zA-Z0-9.-]`).
 
 #### Post
-The optional **Post** **Identifier** may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. It must be prefixed with an underscore (`_`).
+The optional **Post** **Identifier** may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. It must be prefixed with an underscore (`_`). **Post** **Identifier**s should only contain alphanumeric characters, dots and underscores (`[a-zA-Z0-9._]`).
 
 ### Metadata
 The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
@@ -80,28 +80,22 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
 ## Backus&ndash;Naur form
-*[Sandbox](https://tinyurl.com/DynaVer-BNF-1-0-0-0-rc3)*
+*[Sandbox](https://tinyurl.com/DynaVer-BNF-1-0-0-0-rc4)*
 ```
 <dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
 
 <number> ::= <integer>+ "." <integer>+ ( "." <integer>+ ( "." <integer>+ )? )?
+<identifier> ::= <pre> ( <post> )? | <post> ( <pre> )?
+<metadata> ::= "+" <metadata_char>+
 
-<identifier> ::= <pre> ( <post> )?
-               | <post> ( <pre> )?
+<pre> ::= "-" <pre_char>+
+<post> ::= "_" <post_char>+
 
-<metadata> ::= "+" <metadata_character>+
-
-<pre> ::= "-" <identifier_character>+
-
-<post> ::= "_" <identifier_character>+
-
-<identifier_character> ::= (<char> | <char> "." <char> )
-
-<metadata_character> ::= (<char> | <char> ("." | "-" | "_") <char> )
+<pre_char> ::= (<char>+ | ("-" | ".") )
+<post_char> ::= (<char>+ | ("_" | ".") )
+<metadata_char> ::= (<char>+ | ("." | "-" | "_") )
 
 <char> ::= <letter> | <integer>
-
 <integer> ::= [0-9]
-
 <letter> ::= [A-Z] | [a-z]
 ```
