@@ -79,23 +79,5 @@ Versions in range `0.*` are Beta versions. These versions are relatively stable 
 
 Versions after `0.*` (`1.*`, `2.*`, etc) are Release versions. These versions are expected to be stable and able to be used without common bugs, and versions have the expectation of having strict semantic meaning, so that a user can receive, for example, the latest `1.6.*` version, and they should be able to use their software without any incompatible changes breaking it.
 
-## Backus&ndash;Naur form
-*[Sandbox](https://tinyurl.com/DynaVer-BNF-1-0-0-0-rc4)*
-```
-<dynaver> ::= <number> ( <identifier> )? ( <metadata> )?
-
-<number> ::= <integer>+ "." <integer>+ ( "." <integer>+ ( "." <integer>+ )? )?
-<identifier> ::= <pre> ( <post> )? | <post> ( <pre> )?
-<metadata> ::= "+" <metadata_char>+
-
-<pre> ::= "-" <pre_char>+
-<post> ::= "_" <post_char>+
-
-<pre_char> ::= (<char>+ | ("-" | ".") )
-<post_char> ::= (<char>+ | ("_" | ".") )
-<metadata_char> ::= (<char>+ | ("." | "-" | "_") )
-
-<char> ::= <letter> | <integer>
-<integer> ::= [0-9]
-<letter> ::= [A-Z] | [a-z]
-```
+## Grammar
+This repository contains [EBNF](/dynaver.ebnf) and [Raku](/dynaver.raku) grammars for DynaVer.

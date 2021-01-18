@@ -1,0 +1,16 @@
+<dynaver> ::= <number> <identifier>? <metadata>?
+
+<number> ::= <digit>+ "." <digit>+ ( "." <digit>+ ( "." <digit>+ )? )?
+<identifier> ::= <pre> <post>? | <post> <pre>?
+<metadata> ::= "+" <metadata_char>+
+
+<pre> ::= "-" <pre_char>+
+<post> ::= "_" <post_char>+
+
+<pre_char> ::= <char> | "-" | "."
+<post_char> ::= <char> | "_" | "."
+<metadata_char> ::= <char> | "-" | "_" | "."
+
+<char> ::= <digit> | <letter>
+<digit> ::= [0-9]
+<letter> ::= [A-Z] | [a-z]
