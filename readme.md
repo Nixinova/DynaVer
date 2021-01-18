@@ -1,11 +1,15 @@
 # Dynamic Versioning
 
-Dynamic Versioning, or DynaVer for short, is a specification for versioning which is very intuitive and versatile &ndash; you probably use something very similar to this naturally. DynaVer is a superset of [SemVer](https://github.com/semver/semver), meaning all valid SemVers are valid DynaVers.
+Dynamic Versioning, or DynaVer for short, is a specification for versioning which is very intuitive and versatile &ndash; you probably use something very similar to this naturally.
+DynaVer is a superset of [SemVer](https://github.com/semver/semver), meaning all valid SemVers are valid DynaVers, albeit with subtly different semantics.
+
+## Summary
+DynaVer differs from SemVer in three ways: the major version part has been split into two parts for denoting major and minor breaking changes, some version parts may be left unset, and a post-release identifier has been added.
 
 ## Format
 *Note: Values in `<`angle brackets`>` are variable names, values in `[`square brackets`]` are optional, and values in `(`parentheses`)` must select one of the values delimited by a pipe (`|`).*
 
-The following is the general format for a Dynamic Version: `<Number>[<Identifiers>][<Metadata>]`. **Number** can be split into between two and four segments: `<Disruptive>.<Breaking>`, `<Disruptive>.<Breaking>.<Compatible>`, and `<Disruptive>.<Breaking>.<Compatible>.<Patch>`.
+The following is the general format for a Dynamic Version: `<Number>[<Identifiers>][<Metadata>]`. **Number** can be split into between two and four parts: `<Disruptive>.<Breaking>`, `<Disruptive>.<Breaking>.<Compatible>`, and `<Disruptive>.<Breaking>.<Compatible>.<Patch>`.
 
 ### Extended layout
 - `<Disruptive>.<Breaking>[.<Compatible>[.<Patch>]]([-<Pre>][_<Post>]|[_<Post>][-<Pre>])[+<Metadata>]`
@@ -34,26 +38,26 @@ The following is the general format for a Dynamic Version: `<Number>[<Identifier
 Each part of the **Number** segment must be an integer number (`[0-9]`) and may be zero-padded. Each declared part is delimited by a dot (`.`). The **Number** segment must come first in a version string.
 
 #### Disruptive
-The **Disruptive** **Number** must be incremented when there are major changes made to your project that cannot be easily fixed by users.
+The **Disruptive** **Number** part must be incremented when there are major changes made to your project that cannot be easily fixed by users.
 
 #### Breaking
-The **Breaking** **Number** must be incremented when there is a change made that breaks functionality in such a way that users are able to quickly fix their projects.
+The **Breaking** **Number** part must be incremented when there is a change made that breaks functionality in such a way that users are able to quickly fix their projects.
 
 #### Compatible
-The optional **Compatible** **Number** must be incremented when only backwards-compatible additions are made to the project.
+The optional **Compatible** **Number** part must be incremented when only backwards-compatible additions are made to the project.
 
 #### Patch
-The optional **Patch** **Number** must be incremented when only backwards-compatible bug fixes are implemented to make existing functionality work correctly.
+The optional **Patch** **Number** part must be incremented when only backwards-compatible bug fixes are implemented to make existing functionality work correctly.
 
 ### Identifier
 
 The optional **Identifier** segment can contain **Pre**, **Post**, or both in any permutation. The **Identifier** must go after the **Number** segment and before the **Metadata**.
 
 #### Pre
-The optional **Pre** **Identifier** may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`). The **Pre** **Identifier** typically follows incrementing progressions such as `-alpha` &rarr; `-beta` &rarr; `-rc` or `-dev` &rarr; `-pre`. **Pre** **Identifier**s should only contain alphanumeric characters, dots and hyphens (`[a-zA-Z0-9.-]`).
+The optional **Pre** **Identifier** part may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`). The **Pre** **Identifier** typically follows incrementing progressions such as `-alpha` &rarr; `-beta` &rarr; `-rc` or `-dev` &rarr; `-pre`. **Pre** **Identifier**s should only contain alphanumeric characters, dots and hyphens (`[a-zA-Z0-9.-]`).
 
 #### Post
-The optional **Post** **Identifier** may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. It must be prefixed with an underscore (`_`). **Post** **Identifier**s should only contain alphanumeric characters, dots and underscores (`[a-zA-Z0-9._]`).
+The optional **Post** **Identifier** part may be used to mark a version that only differs in a slight, usually inconsequential way from its parent, such as a hotfix for a version or to fix or tweak the wording of documentation or code comments, but may also be used to mark changes that are for an unknown future release. It must be prefixed with an underscore (`_`). **Post** **Identifier**s should only contain alphanumeric characters, dots and underscores (`[a-zA-Z0-9._]`).
 
 ### Metadata
 The optional **Metadata** segment may be used to mark the metadata of a build. Versions with differing **Metadata** must not have differing features or implementations, and so is recommended for releasing versions for different platforms that need slightly different code or compilation, or for tagging a version with build information or Git hashes. The **Metadata** segment must be prefixed with a plus sign (`+`). **Metadata** should only contain alphanumeric characters, dots, underscores and hyphens (`[a-zA-Z0-9._-]`).
