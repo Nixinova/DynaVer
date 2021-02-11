@@ -1,0 +1,16 @@
+start: number identifier? metadata?
+
+number: DIGIT+ ("." DIGIT+)~1..3
+identifier: pre post? | post pre?
+metadata: "+" METADATA_CHAR+
+
+pre: "-" PRE_CHAR+
+post: "_" POST_CHAR+
+
+PRE_CHAR: CHAR | "-" | "."
+POST_CHAR: CHAR | "_" | "."
+METADATA_CHAR: CHAR | "-" | "_" | "."
+
+CHAR: DIGIT | LETTER
+DIGIT: /[0-9]/
+LETTER: /[A-Za-z]/
