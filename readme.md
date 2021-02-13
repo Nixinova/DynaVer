@@ -1,4 +1,4 @@
-# Dynamic Versioning
+# Dynamic Versioning 1.0
 
 Dynamic Versioning, or DynaVer for short, is a specification for versioning which is very intuitive and versatile &ndash; you probably use something very similar to this naturally.
 DynaVer is a superset of [SemVer](https://github.com/semver/semver), meaning all valid SemVers are valid DynaVers, albeit with subtly different semantics.
