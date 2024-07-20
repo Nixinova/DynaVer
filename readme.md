@@ -53,6 +53,8 @@ The optional **Patch** **Number** part must be incremented when only backwards-c
 
 The optional **Identifier** segment can contain **Pre**, **Post**, or both in any permutation. The **Identifier** must go after the **Number** segment and before the **Metadata**.
 
+A version that does not include an **Identifier** (i.e., the **Identifier** segment is blank) is known as a **Full Release**.
+
 #### Pre
 The optional **Pre** **Identifier** part may be used to mark a version that is currently in development. It must be prefixed with a hyphen-minus character (`-`). The **Pre** **Identifier** typically follows incrementing progressions such as `-alpha` &rarr; `-beta` &rarr; `-rc` or `-dev` &rarr; `-pre`. **Pre** **Identifier**s should only contain alphanumeric characters, dots and hyphens (`[a-zA-Z0-9.-]`).
 
@@ -72,7 +74,7 @@ Each part of a **Number** must increment individually as an integer; the next **
 Versions should be compared by going across from the right, comparing each **Number** part numerically, such that `2.3` = `2.03` = `02.003`. When **Compatible** and **Patch** are missing, they default to `0`, such that `1.0-pre2` < `1.0.0-pre3` and `1.6` = `1.6.0` = `1.6.0.0`. Versions with **Pre** **Identifier**s take lower precedence than their corresponding release versions, such that `0.7-pre1` < `0.7`. Versions with **Post** **Indentifier**s take higher precedence than their corresponding release versions, such that `1.6.0` < `1.6_1`. When an **Identifier** contains numbers, the numbers should be compared numerically and independently from the surrounding characters, such that `1.4-pre4` < `1.4-pre10`. Dots may be used to force a comparison split, such that `1.0-1.8` < `1.0-12`. **Metadata** must be ignored completely when comparing versions.
 
 ## Promoting
-A version may be promoted from one **Named Range** to the next or from a pre-release to full release at any point, and the new version does not need to match the incrementing criteria applied to release versions. For example, 0.7.3 could be followed by 1.00 which may only contain a single bug fix, and 1.1.0-rc3 and 1.1.0 may be the exact same version.
+A version may be promoted from one **Named Range** to the next or from a pre-release version (a version that includes a **Pre** **Identifier**) to a **Full Release** at any point, and the new version does not need to match the incrementing criteria applied to release versions. For example, 0.7.3 could be followed by 1.00 which may only contain a single bug fix, and 1.1.0-rc3 and 1.1.0 may be the exact same version.
 
 ## Named Ranges
 Versions in range `0.0.0.*` are **Pre-Alpha** versions. Versions in this range should probably not be released to the public and may be unstable, or even nonfunctional, with prevalent major bugs. Since there is only one version number to increment, any changes, breaking or patch, can be added in any new version, and so **Pre** and **Post** **Identifier**s may be useful for denoting semantic changes in this range.
