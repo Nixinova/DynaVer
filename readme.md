@@ -47,14 +47,14 @@ The Mandatory **Disruptive** **Number** part Must be incremented when there are 
 The Mandatory **Breaking** **Number** part Must be incremented when there is a change made that breaks functionality in such a way that users are able to quickly fix their projects.
 
 #### Compatible
-The Optional **Compatible** **Number** part Must be incremented when only backwards-compatible additions are made to the project.
+The Optional **Compatible** **Number** part Must be incremented only when backwards-compatible additions are made to the project.
 
 #### Patch
-The Optional **Patch** **Number** part Must be incremented when only backwards-compatible bug fixes are implemented to make existing functionality work correctly.
+The Optional **Patch** **Number** part Must be incremented only when backwards-compatible bug fixes are implemented to make existing functionality work correctly.
 
 ### Identifier
 
-The Optional **Identifier** segment can contain **Pre**, **Post**, or both in any permutation. The **Identifier** Must go after the **Number** segment and before the **Metadata**.
+The Optional **Identifier** segment contains **Pre**, **Post**, or both in any permutation. The **Identifier** Must go after the **Number** segment and before the **Metadata**.
 
 A version that does not include an **Identifier** (i.e., the **Identifier** segment is blank) is known as a **Full Release**.
 
